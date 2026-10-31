@@ -1,10 +1,13 @@
 FROM node:22-bookworm-slim
 
 ENV NODE_ENV=production
-ENV HOST=0.0.0.0
+WORKDIR /app
 
-RUN npm install --global ruflo@3.56.10
+RUN npm install --global ruflo@latest \
+    && npm cache clean --force
+
+COPY start.sh /app/start.sh
+RUN chmod 755 /app/start.sh
 
 EXPOSE 10000
-
-CMD ["sh", "-c", "ruflo mcp start -t http --host 0.0.0.0 --port ${PORT:-10000}"]
+CMD ["/app/start.sh"]
