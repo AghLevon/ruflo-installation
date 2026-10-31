@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ruflo-ai-orchestrator",
+  "version": "1.0.0",
+  "description": "A structured multi-agent orchestration playbook for ChatGPT: task decomposition, role-based analysis, workflow planning, execution control, and quality assurance.",
+  "author": { "name": "Levon" },
+  "license": "MIT",
+  "keywords": ["multi-agent", "orchestration", "workflow", "research", "automation", "quality-assurance", "composio"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "RuFlo AI Orchestrator",
+        "shortDescription": "Plan and coordinate complex AI workflows",
+        "longDescription": "A role-based orchestration skill for decomposing complex requests into independently verifiable workstreams, assigning specialist roles, coordinating tool use, and merging results. It does not itself install the RuFlo runtime or create an MCP connection.",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Use RuFlo to break this task into workstreams and produce an execution plan.",
+          "Run a multi-role review of this proposal and return a consolidated recommendation.",
+          "Design an automation workflow with dependencies, approvals, and quality checks."
+        ]
+      },
+      "onboardingSkill": "./skills/setup/SKILL.md"
+    }
+  }
+}
